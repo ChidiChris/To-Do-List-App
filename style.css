@@ -253,7 +253,7 @@ audio #control {
         /* background-color: black; */
         padding: 10px;
         background-image: url(images/20230617_201621.jpg);
-        background-size: cover;
+        background-size: contain;
     }
 
     .todo-app {
