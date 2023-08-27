@@ -251,9 +251,9 @@ audio #control {
         width: 100%;
         /* min-height: 200vh; */
         /* background-color: black; */
-        padding: 10px;
+        /* padding: 10px; */
         background-image: url(images/20230617_201621.jpg);
-        background-size: contain;
+        background-size: cover;
     }
 
     .todo-app {
