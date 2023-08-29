@@ -297,6 +297,7 @@ audio #control {
         font-size: 17px;
         cursor: pointer;
         border-radius: 40px;
+        margin-left: -70px;
     }
     
 }
