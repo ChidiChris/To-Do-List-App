@@ -12,7 +12,7 @@ const listBox = document.getElementById("list-box");
 
 function addTask(){
     if(inputBox.value === ''){
-        alert("Idan is trying to add an invisible text, lol. Please write something!")
+        alert("Idan is trying to add an invisible text, lol. Please write something")
     }
     else{
         let li = document.createElement("li");
