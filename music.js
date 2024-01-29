@@ -28,16 +28,16 @@ function addTask(){
 
 //For the click function
 
-listBox.addEventListener("click", function(e){
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
-        saveData();
-    }
-    else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
-        saveData();
-    }
-}, false)
+// listBox.addEventListener("click", function(e){
+//     if(e.target.tagName === "LI"){
+//         e.target.classList.toggle("checked");
+//         saveData();
+//     }
+//     else if(e.target.tagName === "SPAN"){
+//         e.target.parentElement.remove();
+//         saveData();
+//     }
+// }, false)
 
 //This next function helps you to store the task on your browser.
 //The task will still be visible even after you refresh your browser.
