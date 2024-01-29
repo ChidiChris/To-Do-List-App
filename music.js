@@ -80,16 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Toggle checked status of task and save to local storage
-//   listBox.addEventListener('click', (e) => {
-//     if (e.target.tagName === 'LI') {
-//       e.target.classList.toggle('checked');
-//       saveData();
-//     } else if (e.target.tagName === 'SPAN') {
-//       e.target.parentElement.remove();
-//       saveData();
-//     }
-//   });
-// });
+  listBox.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI') {
+      e.target.classList.toggle('checked');
+      saveData();
+    } else if (e.target.tagName === 'SPAN') {
+      e.target.parentElement.remove();
+      saveData();
+    }
+  });
+});
 
 //This next function helps to display the data when next we open the browser again.
 
