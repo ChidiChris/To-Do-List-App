@@ -46,9 +46,7 @@ listBox.addEventListener("click", function(e){
 //     localStorage.setItem("data", listBox.innerHTML);
 // }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const inputBox = document.getElementById('input-box');
-  const listBox = document.getElementById('list-box');
+
 
   // Load tasks from local storage
   const savedTasks = localStorage.getItem('tasks');
