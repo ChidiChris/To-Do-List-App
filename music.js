@@ -22,8 +22,8 @@ function addTask(){
         span.innerHTML = "\u00d7";
         li.appendChild(span);
     }
-    inputBox.value = ""
-    saveData();
+    inputBox.value = "";
+    // saveData();
 }
 
 //For the click function
