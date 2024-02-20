@@ -10,6 +10,16 @@ menu.addEventListener('click', () => {
 const inputBox = document.getElementById("input-box");
 const listBox = document.getElementById("list-box");
 
+document.addEventListener('DOMContentLoaded', () => {
+  const inputBox = document.getElementById('input-box');
+  const listBox = document.getElementById('list-box');
+
+  Load tasks from local storage
+  const savedTasks = localStorage.getItem('tasks');
+  if (savedTasks) {
+    listBox.innerHTML = savedTasks;
+  }
+
 function addTask(){
     if(inputBox.value === ''){
         alert("Idan is trying to add an invisible text, lol. Please write something!")
@@ -43,15 +53,15 @@ listBox.addEventListener("click", function(e){
 // This next function helps you to store the task on your browser.
 // The task will still be visible even after you refresh your browser.
 
-document.addEventListener('DOMContentLoaded', () => {
-  const inputBox = document.getElementById('input-box');
-  const listBox = document.getElementById('list-box');
+// document.addEventListener('DOMContentLoaded', () => {
+//   const inputBox = document.getElementById('input-box');
+//   const listBox = document.getElementById('list-box');
 
-  Load tasks from local storage
-  const savedTasks = localStorage.getItem('tasks');
-  if (savedTasks) {
-    listBox.innerHTML = savedTasks;
-  }
+//   Load tasks from local storage
+//   const savedTasks = localStorage.getItem('tasks');
+//   if (savedTasks) {
+//     listBox.innerHTML = savedTasks;
+//   }
 
   // Add task to list and save to local storage
   // function addTask() {
