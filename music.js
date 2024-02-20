@@ -1,46 +1,47 @@
-const menu = document.querySelector('.menu');
-const logo = document.querySelector('.logo');
+// const menu = document.querySelector('.menu');
+// const logo = document.querySelector('.logo');
 
-menu.addEventListener('click', () => {
-    logo.classList.toggle('isActive');
-});
+// menu.addEventListener('click', () => {
+//     logo.classList.toggle('isActive');
+// });
 
 
 
-const inputBox = document.getElementById("input-box");
-const listBox = document.getElementById("list-box");
+// const inputBox = document.getElementById("input-box");
+// const listBox = document.getElementById("list-box");
 
-function addTask(){
-    if(inputBox.value === ''){
-        alert("Idan is trying to add an invisible text, lol. Please write something!")
-    }
-    else{
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listBox.appendChild(li);
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-    }
-    inputBox.value = "";
-    saveData();
-}
+// function addTask(){
+//     if(inputBox.value === ''){
+//         alert("Idan is trying to add an invisible text, lol. Please write something!")
+//     }
+//     else{
+//         let li = document.createElement("li");
+//         li.innerHTML = inputBox.value;
+//         listBox.appendChild(li);
+//         let span = document.createElement("span");
+//         span.innerHTML = "\u00d7";
+//         li.appendChild(span);
+//     }
+//     inputBox.value = "";
+    
+//     saveData();
+// }
 
-//For the click function
+// //For the click function
 
-listBox.addEventListener("click", function(e){
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
-        saveData();
-    }
-    else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
-        saveData();
-    }
-}, false)
+// listBox.addEventListener("click", function(e){
+//     if(e.target.tagName === "LI"){
+//         e.target.classList.toggle("checked");
+//         saveData();
+//     }
+//     else if(e.target.tagName === "SPAN"){
+//         e.target.parentElement.remove();
+//         saveData();
+//     }
+// }, false)
 
-//This next function helps you to store the task on your browser.
-//The task will still be visible even after you refresh your browser.
+// This next function helps you to store the task on your browser.
+// The task will still be visible even after you refresh your browser.
 
 document.addEventListener('DOMContentLoaded', () => {
   const inputBox = document.getElementById('input-box');
@@ -52,63 +53,63 @@ document.addEventListener('DOMContentLoaded', () => {
     listBox.innerHTML = savedTasks;
   }
 
-  // Add task to list and save to local storage
-  // function addTask() {
-  //   if (inputBox.value === '') {
-  //     alert("Please write something!");
-  //   } else {
-  //     const li = document.createElement('li');
-  //     li.innerHTML = inputBox.value;
-  //     listBox.appendChild(li);
-  //     let span = document.createElement('span');
-  //     span.innerHTML = '\u00d7';
-  //     li.appendChild(span);
-  //     inputBox.value = '';
+  Add task to list and save to local storage
+  function addTask() {
+    if (inputBox.value === '') {
+      alert("Please write something!");
+    } else {
+      const li = document.createElement('li');
+      li.innerHTML = inputBox.value;
+      listBox.appendChild(li);
+      let span = document.createElement('span');
+      span.innerHTML = '\u00d7';
+      li.appendChild(span);
+      inputBox.value = '';
 
-      // Save task to local storage
-  //     saveData();
-  //   }
-  // }
+      Save task to local storage
+      saveData();
+    }
+  }
 
   // Save tasks to local storage
-  // function saveData() {
-  //   localStorage.setItem('tasks', listBox.innerHTML);
-  // }
+  function saveData() {
+    localStorage.setItem('tasks', listBox.innerHTML);
+  }
 
-  // Toggle checked status of task and save to local storage
-//   listBox.addEventListener('click', (e) => {
-//     if (e.target.tagName === 'LI') {
-//       e.target.classList.toggle('checked');
-//       saveData();
-//     } else if (e.target.tagName === 'SPAN') {
-//       e.target.parentElement.remove();
-//       saveData();
-//     }
-//   });
-// });
+  Toggle checked status of task and save to local storage
+  listBox.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI') {
+      e.target.classList.toggle('checked');
+      saveData();
+    } else if (e.target.tagName === 'SPAN') {
+      e.target.parentElement.remove();
+      saveData();
+    }
+  });
+});
 
-//This next function helps to display the data when next we open the browser again.
+// This next function helps to display the data when next we open the browser again.
 
-// function showTask(){
-//     listBox.innerHTML = localStorage.getItem("data");
-// }
-// saveData();
+function showTask(){
+    listBox.innerHTML = localStorage.getItem("data");
+}
+saveData();
 
-// function playTrack(index) {
-//     playlistitems.forEach((items) => {
-//         item.classList.remove("active");
-//     });
+function playTrack(index) {
+    playlistitems.forEach((items) => {
+        item.classList.remove("active");
+    });
 
-//     playlistitems[index].classList.add("active");
+    playlistitems[index].classList.add("active");
 
-//     audioPlayer.src = playlistitems[index].querySelector("a").href;
-//     audioPlayer.play();
-// }
+    audioPlayer.src = playlistitems[index].querySelector("a").href;
+    audioPlayer.play();
+}
 
-// // Event listener for playlist buttons
-// playlistitems.forEach((items, index) => {
-//     items.addEventListener("click", () => {
-//         playTrack(index);
-//     });
-// });
+// Event listener for playlist buttons
+playlistitems.forEach((items, index) => {
+    items.addEventListener("click", () => {
+        playTrack(index);
+    });
+});
 
