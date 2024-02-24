@@ -61,7 +61,7 @@ menu.addEventListener('click', () => {
       li.appendChild(span);
       inputBox.value = '';
 
-      Save task to local storage
+      // Save task to local storage
       saveData();
     }
   }
