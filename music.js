@@ -35,36 +35,36 @@ listBox.addEventListener("click", function(e){
     }
 }, false)
 
-// This next function helps you to store the task on your browser.
-// The task will still be visible even after you refresh your browser.
+// // This next function helps you to store the task on your browser.
+// // The task will still be visible even after you refresh your browser.
 
-document.addEventListener('DOMContentLoaded', () => {
-  const inputBox = document.getElementById('input-box');
-  const listBox = document.getElementById('list-box');
+// document.addEventListener('DOMContentLoaded', () => {
+//   const inputBox = document.getElementById('input-box');
+//   const listBox = document.getElementById('list-box');
 
-  Load tasks from local storage
-  const savedTasks = localStorage.getItem('tasks');
-  if (savedTasks) {
-    listBox.innerHTML = savedTasks;
-  }
+//   Load tasks from local storage
+//   const savedTasks = localStorage.getItem('tasks');
+//   if (savedTasks) {
+//     listBox.innerHTML = savedTasks;
+//   }
 
   // Add task to list and save to local storage
-  // function addTask() {
-  //   if (inputBox.value === '') {
-  //     alert("Please write something!");
-  //   } else {
-  //     const li = document.createElement('li');
-  //     li.innerHTML = inputBox.value;
-  //     listBox.appendChild(li);
-  //     let span = document.createElement('span');
-  //     span.innerHTML = '\u00d7';
-  //     li.appendChild(span);
-  //     inputBox.value = '';
+  function addTask() {
+    if (inputBox.value === '') {
+      alert("Please write something!");
+    } else {
+      const li = document.createElement('li');
+      li.innerHTML = inputBox.value;
+      listBox.appendChild(li);
+      let span = document.createElement('span');
+      span.innerHTML = '\u00d7';
+      li.appendChild(span);
+      inputBox.value = '';
 
-  //     Save task to local storage
-  //     saveData();
-  //   }
-  // }
+      Save task to local storage
+      saveData();
+    }
+  }
 
   // // Save tasks to local storage
   // function saveData() {
