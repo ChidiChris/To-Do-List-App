@@ -85,9 +85,9 @@ listBox.addEventListener("click", function(e){
 
 // // This next function helps to display the data when next we open the browser again.
 
-// function showTask(){
-//     listBox.innerHTML = localStorage.getItem("data");
-// }
-// saveData();
+function showTask(){
+    listBox.innerHTML = localStorage.getItem("data");
+}
+saveData();
 
 
