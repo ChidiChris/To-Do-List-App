@@ -66,10 +66,10 @@ listBox.addEventListener("click", function(e){
   //   }
   // }
 
-  // Save tasks to local storage
-  function saveData() {
-    localStorage.setItem('tasks', listBox.innerHTML);
-  }
+  // // Save tasks to local storage
+  // function saveData() {
+  //   localStorage.setItem('tasks', listBox.innerHTML);
+  // }
 
 //   Toggle checked status of task and save to local storage
 //   listBox.addEventListener('click', (e) => {
