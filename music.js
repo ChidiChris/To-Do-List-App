@@ -18,8 +18,6 @@ function addTask(){
         li.appendChild(span);
     }
     inputBox.value = "";
-    
-    // saveData();
 }
 
 //For the click function
@@ -27,13 +25,11 @@ function addTask(){
 listBox.addEventListener("click", function(e){
     if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
-        // saveData();
     }
     else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
-        // saveData();
     }
-}, false)
+}, false);
 
 // This next function helps you to store the task on your browser.
 // The task will still be visible even after you refresh your browser.
@@ -44,10 +40,10 @@ listBox.addEventListener("click", function(e){
 
   // Load tasks from local storage
     
-  const savedTasks = localStorage.getItem('tasks');
-  if (savedTasks) {
-    listBox.innerHTML = savedTasks;
-  }
+  // const savedTasks = localStorage.getItem('tasks');
+  // if (savedTasks) {
+  //   listBox.innerHTML = savedTasks;
+  // }
 
 //   // Add task to list and save to local storage
 //   function addTask() {
@@ -68,9 +64,9 @@ listBox.addEventListener("click", function(e){
 //   }
 
   // Save tasks to local storage
-  function saveData() {
-    localStorage.setItem('tasks', listBox.innerHTML);
-  }
+  // function saveData() {
+  //   localStorage.setItem('tasks', listBox.innerHTML);
+  // }
 
 //   // Toggle checked status of task and save to local storage
 //   listBox.addEventListener('click', (e) => {
@@ -86,9 +82,9 @@ listBox.addEventListener("click", function(e){
 
 // // This next function helps to display the data when next we open the browser again.
 
-function showTask(){
-    listBox.innerHTML = localStorage.getItem("data");
-}
+// function showTask(){
+//     listBox.innerHTML = localStorage.getItem("data");
+// }
 // saveData();
 
 
