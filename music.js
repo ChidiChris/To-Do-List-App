@@ -19,7 +19,7 @@ function addTask(){
     }
     inputBox.value = "";
     
-    saveData();
+    // saveData();
 }
 
 //For the click function
