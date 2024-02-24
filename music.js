@@ -5,6 +5,9 @@ menu.addEventListener('click', () => {
     logo.classList.toggle('isActive');
 });
 
+const inputBox = document.getElementById("input-box");
+const listBox = document.getElementById("list-box");
+
 function addTask(){
     if(inputBox.value === ''){
         alert("Idan is trying to add an invisible text, lol. Please write something!")
