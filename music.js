@@ -40,16 +40,22 @@ listBox.addEventListener("click", function(e){
     }
 }, false);
 
-function saveData(){
-    localStorage.setItem("data", listBox.innerHTML);
+// function saveData(){
+//     localStorage.setItem("data", listBox.innerHTML);
+// }
+
+// function showTask(){
+//     listBox.innerHTML = localStorage.getItem("data");
+// }
+// saveData()
+
+function saveData() {
+  sessionStorage.setItem("data", listBox.innerHTML);
 }
 
-function showTask(){
-    listBox.innerHTML = localStorage.getItem("data");
+function showTask() {
+  listBox.innerHTML = sessionStorage.getItem("data") || "";
 }
-saveData()
-
-
 
 
 
