@@ -40,30 +40,16 @@ listBox.addEventListener("click", function(e){
     }
 }, false);
 
-// function saveData(){
-//     localStorage.setItem("data", listBox.innerHTML);
-// }
-
-// function showTask(){
-//     listBox.innerHTML = localStorage.getItem("data");
-// }
-// saveData()
-
-function saveData() {
-  const data = Array.from(listBox.children).map(li => li.outerHTML);
-  localStorage.setItem("data", JSON.(data));
+function saveData(){
+    localStorage.setItem("data", listBox.innerHTML);
 }
 
-function showTask() {
-  const data = JSON.parse(localStorage.getItemdata"));
-  if (data) {
-    data.forEach(html => {
-      const li = document.createElement("li");
-      li.innerHTML = html;
-      listBox.appendChild(li);
-    });
-  }
+function showTask(){
+    listBox.innerHTML = localStorage.getItem("data");
 }
+saveData()
+
+
 
 
 
