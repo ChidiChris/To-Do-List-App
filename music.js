@@ -1,54 +1,3 @@
-// const menu = document.querySelector('.menu');
-// const logo = document.querySelector('.logo');
-
-// menu.addEventListener('click', () => {
-//     logo.classList.toggle('isActive');
-// });
-
-// const inputBox = document.getElementById("input-box");
-// const listBox = document.getElementById("list-box");
-
-// function addTask(){
-//     if(inputBox.value === ''){
-//         alert("Idan is trying to add an invisible text, lol. Please write something!")
-//     }
-//     else{
-//         let li = document.createElement("li");
-//         li.innerHTML = inputBox.value;
-//         listBox.appendChild(li);
-//         let span = document.createElement("span");
-//         span.innerHTML = "\u00d7";
-//         li.appendChild(span);
-//     }
-//     inputBox.value = "";
-//     saveData();
-// }
-
-// //For the click function
-
-// listBox.addEventListener("click", function(e){
-//     if(e.target.tagName === "LI"){
-//         e.target.classList.toggle("checked");
-//         saveData();
-//     }
-//     else if(e.target.tagName === "SPAN"){
-//         e.target.parentElement.remove();
-//         saveData();
-//     }
-// }, false);
-
-// function saveData(){
-//     localStorage.setItem("data", listBox.innerHTML);
-// }
-
-// function showTask(){
-//     listBox.innerHTML = localStorage.getItem("data");
-// }
-// saveData()
-
-
-
-
 const menu = document.querySelector('.menu');
 const logo = document.querySelector('.logo');
 
@@ -59,11 +8,11 @@ menu.addEventListener('click', () => {
 const inputBox = document.getElementById("input-box");
 const listBox = document.getElementById("list-box");
 
-function addTask() {
-    if (inputBox.value === '') {
+function addTask(){
+    if(inputBox.value === ''){
         alert("Idan is trying to add an invisible text, lol. Please write something!")
     }
-    else {
+    else{
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
         listBox.appendChild(li);
@@ -77,26 +26,23 @@ function addTask() {
 
 //For the click function
 
-listBox.addEventListener("click", function (e) {
-    if (e.target.tagName === "LI") {
+listBox.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
         saveData();
     }
-    else if (e.target.tagName === "SPAN") {
+    else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
         saveData();
     }
 }, false);
 
-function saveData() {
-    localStorage.setItem("data", Array.from(listBox.children).map(li => li.outerHTML).join(''));
+function saveData(){
+    localStorage.setItem("data", listBox.innerHTML);
 }
 
-function showList() {
-    const data = localStorage.getItem("data");
-    if (data) {
-        listBox.innerHTML = data;
-    }
+function showTask(){
+    listBox.innerHTML = localStorage.getItem("data");
 }
+saveData()
 
-showList();
