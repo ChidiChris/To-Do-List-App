@@ -1,44 +1,44 @@
 
 
 
-const menu = document.querySelector('.menu');
-const logo = document.querySelector('.logo');
+// const menu = document.querySelector('.menu');
+// const logo = document.querySelector('.logo');
 
-menu.addEventListener('click', () => {
-    logo.classList.toggle('isActive');
-});
+// menu.addEventListener('click', () => {
+//     logo.classList.toggle('isActive');
+// });
 
-const inputBox = document.getElementById("input-box");
-const listBox = document.getElementById("list-box");
+// const inputBox = document.getElementById("input-box");
+// const listBox = document.getElementById("list-box");
 
-function addTask(){
-    if(inputBox.value === ''){
-        alert("Idan is trying to add an invisible text, lol. Please write something!")
-    }
-    else{
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listBox.appendChild(li);
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-    }
-    inputBox.value = "";
-    saveData();
-}
+// function addTask(){
+//     if(inputBox.value === ''){
+//         alert("Idan is trying to add an invisible text, lol. Please write something!")
+//     }
+//     else{
+//         let li = document.createElement("li");
+//         li.innerHTML = inputBox.value;
+//         listBox.appendChild(li);
+//         let span = document.createElement("span");
+//         span.innerHTML = "\u00d7";
+//         li.appendChild(span);
+//     }
+//     inputBox.value = "";
+//     saveData();
+// }
 
-//For the click function
+// //For the click function
 
-listBox.addEventListener("click", function(e){
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
-        saveData();
-    }
-    else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
-        saveData();
-    }
-}, false);
+// listBox.addEventListener("click", function(e){
+//     if(e.target.tagName === "LI"){
+//         e.target.classList.toggle("checked");
+//         saveData();
+//     }
+//     else if(e.target.tagName === "SPAN"){
+//         e.target.parentElement.remove();
+//         saveData();
+//     }
+// }, false);
 
 // function saveData(){
 //     localStorage.setItem("data", listBox.innerHTML);
@@ -49,14 +49,60 @@ listBox.addEventListener("click", function(e){
 // }
 // saveData()
 
+
+
+
+const menu = document.querySelector('.menu');
+const logo = document.querySelector('.logo');
+
+menu.addEventListener('click', () => {
+    logo.classList.toggle('isActive');
+});
+
+const inputBox = document.getElementById("input-box");
+const listBox = document.getElementById("list-box");
+
+function addTask() {
+    const task = inputBox.value.trim();
+    if (!task) {
+        alert("Please write something!");
+        return;
+    }
+    const li = document.createElement("li");
+    li.textContent = task;
+    const span = document.createElement("span");
+    span.textContent = "\u00d7";
+    li.appendChild(span);
+    listBox.appendChild(li);
+    inputBox.value = "";
+    saveData();
+}
+
+listBox.addEventListener("click", function(e) {
+    const target = e.target;
+    if (target.tagName === "LI") {
+        target.classList.toggle("checked");
+        saveData();
+    } else if (target.tagName === "SPAN") {
+        target.parentElement.remove();
+        saveData();
+    }
+}, false);
+
+showTask();
+
 function saveData() {
-  sessionStorage.setItem("data", listBox.innerHTML);
+    const tasks = Array.from(listBox.children).map(li => li.outerHTML);
+    localStorage.setItem("data", JSON.stringify(tasks));
 }
 
 function showTask() {
-  listBox.innerHTML = sessionStorage.getItem("data") || "";
+    const tasks = JSON.parse(localStorage.getItem("data"));
+    if (tasks) {
+        tasks.forEach(task => {
+            const li = document.createElement("li");
+            li.innerHTML = task;
+            listBox.appendChild(li);
+        });
+    }
 }
-
-
-
-
