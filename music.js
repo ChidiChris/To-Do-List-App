@@ -1,44 +1,44 @@
 
 
 
-// const menu = document.querySelector('.menu');
-// const logo = document.querySelector('.logo');
+const menu = document.querySelector('.menu');
+const logo = document.querySelector('.logo');
 
-// menu.addEventListener('click', () => {
-//     logo.classList.toggle('isActive');
-// });
+menu.addEventListener('click', () => {
+    logo.classList.toggle('isActive');
+});
 
-// const inputBox = document.getElementById("input-box");
-// const listBox = document.getElementById("list-box");
+const inputBox = document.getElementById("input-box");
+const listBox = document.getElementById("list-box");
 
-// function addTask(){
-//     if(inputBox.value === ''){
-//         alert("Idan is trying to add an invisible text, lol. Please write something!")
-//     }
-//     else{
-//         let li = document.createElement("li");
-//         li.innerHTML = inputBox.value;
-//         listBox.appendChild(li);
-//         let span = document.createElement("span");
-//         span.innerHTML = "\u00d7";
-//         li.appendChild(span);
-//     }
-//     inputBox.value = "";
-//     saveData();
-// }
+function addTask(){
+    if(inputBox.value === ''){
+        alert("Idan is trying to add an invisible text, lol. Please write something!")
+    }
+    else{
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        listBox.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+    }
+    inputBox.value = "";
+    saveData();
+}
 
-// //For the click function
+//For the click function
 
-// listBox.addEventListener("click", function(e){
-//     if(e.target.tagName === "LI"){
-//         e.target.classList.toggle("checked");
-//         saveData();
-//     }
-//     else if(e.target.tagName === "SPAN"){
-//         e.target.parentElement.remove();
-//         saveData();
-//     }
-// }, false);
+listBox.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData();
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+    }
+}, false);
 
 // function saveData(){
 //     localStorage.setItem("data", listBox.innerHTML);
@@ -48,6 +48,22 @@
 //     listBox.innerHTML = localStorage.getItem("data");
 // }
 // saveData()
+
+function saveData() {
+  const data = Array.from(listBox.children).map(li => li.outerHTML);
+  localStorage.setItem("data", JSON.(data));
+}
+
+function showTask() {
+  const data = JSON.parse(localStorage.getItemdata"));
+  if (data) {
+    data.forEach(html => {
+      const li = document.createElement("li");
+      li.innerHTML = html;
+      listBox.appendChild(li);
+    });
+  }
+}
 
 
 
@@ -109,76 +125,4 @@
 
 
 
-const menu = document.querySelector('.menu');
-const logo = document.querySelector('.logo');
-
-menu.addEventListener('click', () => {
-  logo.classList.toggle('isActive');
-});
-
-const inputBox = document.getElementById("input-box");
-const listBox = document.getElementById("list-box");
-
-function addTask() {
-  const inputText = inputBox.value.trim(); // Trim leading/trailing whitespace
-
-  if (!inputText) {
-    alert("Please enter a task to add!");
-    return; // Prevent creating an empty list item
-  }
-
-  const li = document.createElement("li");
-  li.textContent = inputText; // Use textContent for better accessibility
-
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
-  deleteButton.classList.add("delete-btn");
-
-  li.appendChild(deleteButton);
-  listBox.appendChild(li);
-
-  inputBox.value = "";
-  saveData();
-}
-
-listBox.addEventListener("click", function(event) {
-  const target = event.target;
-
-  if (target.tagName === "LI") {
-    target.classList.toggle("checked");
-  } else if (target.classList.contains("delete-btn")) {
-    target.parentElement.remove();
-  }
-
-  saveData();
-});
-
-function saveData() {
-  localStorage.setItem("data", JSON.stringify(Array.from(listBox.querySelectorAll("li"))
-    .map(li => ({ text: li.textContent, completed: li.classList.contains("checked") }))));
-}
-
-function showTask() {
-  const storedTasks = JSON.parse(localStorage.getItem("data"));
-
-  if (!storedTasks) return; // Handle empty localStorage
-
-  const tasks = storedTasks.map(task => {
-    const li = document.createElement("li");
-    li.textContent = task.text;
-    li.classList.toggle("checked", task.completed);
-
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.classList.add("delete-btn");
-
-    li.appendChild(deleteButton);
-    return li;
-  });
-
-  listBox.innerHTML = ""; // Clear existing content before adding new
-  tasks.forEach(task => listBox.appendChild(task));
-}
-
-showTask(); // Call showTask to display existing tasks on page load
 
