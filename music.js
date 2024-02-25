@@ -1,6 +1,3 @@
-
-
-
 // const menu = document.querySelector('.menu');
 // const logo = document.querySelector('.logo');
 
@@ -63,46 +60,43 @@ const inputBox = document.getElementById("input-box");
 const listBox = document.getElementById("list-box");
 
 function addTask() {
-    const task = inputBox.value.trim();
-    if (!task) {
-        alert("Please write something!");
-        return;
+    if (inputBox.value === '') {
+        alert("Idan is trying to add an invisible text, lol. Please write something!")
     }
-    const li = document.createElement("li");
-    li.textContent = task;
-    const span = document.createElement("span");
-    span.textContent = "\u00d7";
-    li.appendChild(span);
-    listBox.appendChild(li);
+    else {
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        listBox.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+    }
     inputBox.value = "";
     saveData();
 }
 
-listBox.addEventListener("click", function(e) {
-    const target = e.target;
-    if (target.tagName === "LI") {
-        target.classList.toggle("checked");
+//For the click function
+
+listBox.addEventListener("click", function (e) {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
         saveData();
-    } else if (target.tagName === "SPAN") {
-        target.parentElement.remove();
+    }
+    else if (e.target.tagName === "SPAN") {
+        e.target.parentElement.remove();
         saveData();
     }
 }, false);
 
-showTask();
-
 function saveData() {
-    const tasks = Array.from(listBox.children).map(li => li.outerHTML);
-    localStorage.setItem("data", JSON.stringify(tasks));
+    localStorage.setItem("data", Array.from(listBox.children).map(li => li.outerHTML).join(''));
 }
 
-function showTask() {
-    const tasks = JSON.parse(localStorage.getItem("data"));
-    if (tasks) {
-        tasks.forEach(task => {
-            const li = document.createElement("li");
-            li.innerHTML = task;
-            listBox.appendChild(li);
-        });
+function showList() {
+    const data = localStorage.getItem("data");
+    if (data) {
+        listBox.innerHTML = data;
     }
 }
+
+showList();
